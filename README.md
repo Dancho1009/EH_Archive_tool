@@ -1,4 +1,4 @@
-# 作品归档与查重工具（EH Archive Tool）
+# EHViewer下载作品归档与查重工具（EH Archive Tool）
 
 用于Ehviewer下载的本地同人作品库的**分类归档 + 去重审查 + 系列缺失检测**。  （其他下载源本项目不保证可用性，最好是以Ehviewer下载命名的格式）
 支持多目录合并扫描（zip 库 + 文件夹库），并输出 Excel、HTML 审核页、JSON 结果。
