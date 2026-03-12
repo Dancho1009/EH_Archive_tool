@@ -55,7 +55,7 @@ class GuiLayoutMixin(GuiLayoutSectionsMixin, GuiLayoutThemeMixin):
         right_scroll = QScrollArea()
         right_scroll.setWidgetResizable(True)
         right_scroll.setFrameShape(QFrame.NoFrame)
-        r.addWidget(right_scroll)
+        r.addWidget(right_scroll, 1)
 
         right_content = QWidget()
         right_scroll.setWidget(right_content)
@@ -65,8 +65,11 @@ class GuiLayoutMixin(GuiLayoutSectionsMixin, GuiLayoutThemeMixin):
 
         self._build_opts(rr)
         self._build_info_tabs(rr)
-        self._build_actions(rr)
         rr.addStretch(1)
+
+        # Keep "执行与结果" fixed at the bottom of the right pane.
+        # Only parameter/stat sections should scroll.
+        self._build_actions(r)
 
     def _remember_main_splitter_sizes(self, *_args) -> None:
         if getattr(self, "_adjusting_splitter", False) or getattr(self, "_window_resizing", False):
