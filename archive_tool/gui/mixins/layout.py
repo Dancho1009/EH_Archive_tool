@@ -63,12 +63,12 @@ class GuiLayoutMixin(GuiLayoutSectionsMixin, GuiLayoutThemeMixin):
         rr.setContentsMargins(0, 0, 0, 0)
         rr.setSpacing(8)
 
+        # Scrollable region: options only.
         self._build_opts(rr)
-        self._build_info_tabs(rr)
         rr.addStretch(1)
 
-        # Keep "执行与结果" fixed at the bottom of the right pane.
-        # Only parameter/stat sections should scroll.
+        # Fixed region: runtime/stats tabs + actions.
+        self._build_info_tabs(r)
         self._build_actions(r)
 
     def _remember_main_splitter_sizes(self, *_args) -> None:
