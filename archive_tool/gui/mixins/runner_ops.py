@@ -210,6 +210,8 @@ def start(self) -> None:
         QMessageBox.critical(self, "启动失败", "无法启动子进程")
         self.timer.stop()
         return
+    if hasattr(self, "info_tabs") and self.info_tabs is not None:
+        self.info_tabs.setCurrentIndex(0)
     self.btn_run.setEnabled(False)
     self.btn_stop.setEnabled(True)
 
@@ -304,6 +306,8 @@ def on_done(self, code: int, _status: QProcess.ExitStatus) -> None:
     self.stop_requested = False
     self._update_result_buttons()
     self._load_output_stats()
+    if hasattr(self, "info_tabs") and self.info_tabs is not None:
+        self.info_tabs.setCurrentIndex(1)
 
 
 def stop(self) -> None:

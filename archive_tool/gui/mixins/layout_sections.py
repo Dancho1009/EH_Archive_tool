@@ -103,6 +103,7 @@ class GuiLayoutSectionsMixin:
 
     def _build_info_tabs(self, parent: QVBoxLayout) -> None:
         tabs = QTabWidget()
+        self.info_tabs = tabs
         tabs.setDocumentMode(True)
         tabs.setToolTip(
             "运行信息分为三个页签：\n"
@@ -113,6 +114,7 @@ class GuiLayoutSectionsMixin:
         tabs.addTab(self._create_runtime_frame(), "运行状态")
         tabs.addTab(self._create_stats_frame(), "结果统计")
         tabs.addTab(self._create_last_run_frame(), "上次运行")
+        tabs.setCurrentIndex(2)
         parent.addWidget(tabs)
 
     def _build_runtime(self, parent: QVBoxLayout) -> None:
